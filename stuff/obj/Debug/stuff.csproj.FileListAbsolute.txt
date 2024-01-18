@@ -1,0 +1,6 @@
+E:\gaydev\not trash\projects\cblya\heyyeyeyeyeya\stuff\bin\Debug\stuff.exe
+E:\gaydev\not trash\projects\cblya\heyyeyeyeyeya\stuff\bin\Debug\stuff.pdb
+E:\gaydev\not trash\projects\cblya\heyyeyeyeyeya\stuff\obj\Debug\stuff.csproj.AssemblyReference.cache
+E:\gaydev\not trash\projects\cblya\heyyeyeyeyeya\stuff\obj\Debug\stuff.csproj.CoreCompileInputs.cache
+E:\gaydev\not trash\projects\cblya\heyyeyeyeyeya\stuff\obj\Debug\stuff.exe
+E:\gaydev\not trash\projects\cblya\heyyeyeyeyeya\stuff\obj\Debug\stuff.pdb
