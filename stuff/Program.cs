@@ -1,28 +1,61 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Policy;
+using System.Threading;
+using stuff.ZOOO;
 
 namespace stuff
 {
     public class Program
     {
-        public int jumps = 2;
         public static void Main(string[] args)
         {
-            var ring = new Ring();
-            ring.ChooseYourFighters();
-            ring.StartFight();
-            ring.ShowWinner();
+            var zoo = new Zoo();
+            
+            var meylish = new Mammal("Meylish", 17, FoodType.Omnivorous, true);
+            zoo.AddAnimal(meylish);
+            
+            var cherry = new Mammal("cat Cherry", 1, FoodType.Omnivorous, false);
+            zoo.AddAnimal(cherry);
 
-            //aeeeeee
-            /*var book1 = new Book("101 way to waste your life", "Meylish", 2024 );
-            var book2 = new Book("My top \"from friends to lovers\" fanfics of all time", "Susanna", 2022);
+            var gena = new Reptile("crocodile Gena", 10, FoodType.Carnivorous, false);
+            zoo.AddAnimal(gena);
+            
+            var lexus = new Bird("parrot Lexus", 2, FoodType.Herbivore, 30);
+            zoo.AddAnimal(lexus);
+
+            Console.WriteLine();
+            lexus.ReadSign();
+            gena.TakeALook();
+            cherry.Pat();
+            meylish.Pat();
+            
+            Console.WriteLine();
+            zoo.PrintAllAnimals();
+            
+            Console.WriteLine();
+            zoo.FeedAnimals();
+            
+            Console.WriteLine();
+            foreach (var animal in zoo.Animals)
+            {
+                animal.MakeSound();
+            }
+        }
+
+        private void Library()
+        {
+            //librarby
+            var book1 = new Book("101 way to waste your life", "Meylish", 2024);
+            var book2 = new Book("Slowburn isn't boring, you are", "Susanna", 2022);
             var book3 = new Book("How i spent my summer", "Mayday", 2022);
             var book4 = new Book("The washing machine manual", "Vlen", 2036);
-            var book5 = new Book("The world's greatest person autobiography", "Vlen", 2035);
-            var book6 = new Book("Guide on how to repel people", "Meylish", 2023);
-            var book7 = new Book("Deep analysis of minsons relationship", "Susanna", 2023);
-            var book8 = new Book("Why are levi and hanji kanon and your <censored> eruri sucking <censored>", "Susanna", 2024);
-            var book9 = new Book("The great story of Dolina Polsha emancipation", "Derllie", 2024);
+            var book5 = new Book("Guide on how to repel people", "Meylish", 2023);
+            var book6 = new Book("Deep analysis of minsons relationship", "Susanna", 2023);
+            var book7 = new Book("Why are levi and hanji kanon and your <censored> eruri <censored> <censored>",
+                "Susanna", 2024);
+            var book8 = new Book("The great story of Dolina Polsha emancipation", "Diluxe", 2024);
+            var book9 = new Book("10 reasons for Meylish to start playing Dota", "ZloyDed", 2024);
 
             var library = new Library();
             library.AddBook(book1);
@@ -34,42 +67,41 @@ namespace stuff
             library.AddBook(book7);
             library.AddBook(book8);
             library.AddBook(book9);
-            
+            library.AddBook(book9);
+
             Console.WriteLine("\n");
             library.ShowAllBooks();
             Console.WriteLine("\nBy author: \n");
-            library.ShowBooksByAuthor("Vlen");
+            library.ShowBooksByAuthor("Susanna");
             Console.WriteLine("\nBy name: \n");
             library.ShowBooksByName();
             Console.WriteLine("\nBy year: \n");
             library.ShowBooksByYear(2022);
             Console.WriteLine("\n");
+            library.RemoveBook("aaaa", true);
 
             var reader = new Reader();
             reader.BorrowBook("Master and Margarita", library);
             reader.BorrowBook("The washing machine manual", library);
             reader.ShowAllBooks();
-            reader.ReturnBook("The washing machine manual", library);*/
+            reader.ReturnBook("The washing machine manual", library);
+        }
 
-            /*//train config
-            TrainRouteConfigurator.ShowCurrentTrain();
-            var route = TrainRouteConfigurator.CreateRoute();
-            if (route != null)
-            {
-                var tickets = TrainRouteConfigurator.SellTickets(route);
-                var train = TrainRouteConfigurator.CreateTrain(route, tickets);
-                TrainRouteConfigurator.LaunchTrain(train);
-                TrainRouteConfigurator.ShowCurrentTrain();
-            }
-            else
-            {
-                Console.WriteLine("Wrong route");
-            }
+        private void Fighters()
+        {
+            //fighters
+            var ring = new Ring();
+            var fighters = ring.ChooseYourFighters();
+            ring.StartFight(fighters);
+            ring.ShowWinner(fighters);
+        }
 
+        private void Shop()
+        {
             //shop
             Player plr = new Player();
             var items = new List<Item>();
-            var item1 = new Item("Clay kitty", 1000, 
+            var item1 = new Item("Clay kitty", 1000,
                 "Cutie patootie little clay kitten from Maeve... Who is Maeve? Well, maybe this lonely black-haired old man knows");
             var item2 = new Item("Glued mug", 10,
                 "Idk why would anyone need this, but you would look very fancy walking down the street and drinking from the mug");
@@ -86,15 +118,39 @@ namespace stuff
             plr.CheckInventory();
             plr.BuyItem("Glued mug", shopkeeper);
             shopkeeper.ShowAllItems();
+        }
 
+        private void TrainConfig()
+        {
+            //train config
+            TrainRouteConfigurator.ShowCurrentTrain();
+            var route = TrainRouteConfigurator.CreateRoute();
+            if (route != null)
+            {
+                var tickets = TrainRouteConfigurator.SellTickets(route);
+                var train = TrainRouteConfigurator.CreateTrain(route, tickets);
+                TrainRouteConfigurator.LaunchTrain(train);
+                TrainRouteConfigurator.ShowCurrentTrain();
+            }
+            else
+            {
+                Console.WriteLine("Wrong route");
+            }
+        }
+
+        private void Cards()
+        {
             //card game
             var cardPack = new CardPack();
             cardPack.ShuffleCards();
             CardGame.AddPlayers();
             CardGame.Rounds(cardPack);
-            CardGame.ShowWinner();*/
+            CardGame.ShowWinner();
+        }
 
-
+        private void Database()
+        {
+            //database
             /*var player = new Player("mey", "gayhub student", 17);
             player.GetPlayerInfo();
             player.DrawPlayer(3,4);
@@ -111,9 +167,12 @@ namespace stuff
             Console.WriteLine(PlayersDatabase.GetIDbyIndex(1));
             PlayersDatabase.BanPlayer(PlayersDatabase.GetIDbyIndex(1));
             PlayersDatabase.DeletePlayer(PlayersDatabase.GetIDbyIndex(1));*/
+        }
 
-            //1
-            /*void CheckIfEven()
+        private void HW1()
+        {
+             //1
+            void CheckIfEven()
             {
                 Console.Write("Enter any number: ");
                 var num = Console.ReadLine();
@@ -141,10 +200,10 @@ namespace stuff
             {
                 numList[i] += 2;
             }
-            Console.WriteLine(string.Join(" ", numList));*/
+            Console.WriteLine(string.Join(" ", numList));
 
             //3
-            /*var random = new Random();
+            var random = new Random();
             int randomNumber;
             int attemptsCounter;
 
@@ -207,8 +266,7 @@ namespace stuff
                         break;
                 }
 
-            }*/
-
+            }
         }
     }
 }

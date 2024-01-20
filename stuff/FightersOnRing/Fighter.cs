@@ -1,45 +1,31 @@
-﻿namespace stuff
+﻿using System;
+
+namespace stuff
 {
     public class Fighter
     {
         public string Name { get; set; }
 
-        public int MaxHealth;
-
-        private int health;
-        public int Health
-        {
-            get
-            {
-                return health;
-            }
-            set
-            {
-                if (health > MaxHealth)
-                {
-                    health = MaxHealth;
-                }
-                else
-                {
-                    health = value;
-                }
-            }
-        }
-        public int Attack { get; set; }
-        public int Armor { get; set; }
+        protected int MaxHealth;
+        public float Health { get; set; }
+        protected int Attack { get; set; }
+        protected int Armor { get; set; }
 
         public virtual void GetDamage(int damage)
         {
-            Health -= damage / 100 * Armor;
+            var dmg = 100 - Armor;
+            Health -= Convert.ToSingle(damage) / 100 * dmg;
+            if (Health < 0)
+            {
+                Health = 0;
+            }
+            //100% - armor
+            //% getting
         }
         
-        public virtual void GetDamage(int damage, Fighter fighter)
-        {
-            Health -= damage / 100 * Armor;
-        }
-
         public virtual void DealDamage(Fighter fighter)
         {
+            //takes fighter and deals YOUR dmg
             fighter.GetDamage(Attack);
         }
         

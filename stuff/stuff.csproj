@@ -43,17 +43,20 @@
         <Compile Include="CardGame\CardGame.cs" />
         <Compile Include="CardGame\CardPack.cs" />
         <Compile Include="CardGame\CardPlayer.cs" />
+        <Compile Include="Character.cs" />
         <Compile Include="FightersOnRing\Fighter.cs" />
         <Compile Include="FightersOnRing\FighterType1.cs" />
         <Compile Include="FightersOnRing\FighterType2.cs" />
         <Compile Include="FightersOnRing\FighterType3.cs" />
         <Compile Include="FightersOnRing\FighterType4.cs" />
         <Compile Include="FightersOnRing\Ring.cs" />
+        <Compile Include="Lesson.cs" />
         <Compile Include="Library\Book.cs" />
         <Compile Include="Library\Library.cs" />
         <Compile Include="Library\Reader.cs" />
-        <Compile Include="Player.cs" />
-        <Compile Include="PlayersDatabase.cs" />
+        <Compile Include="Mage.cs" />
+        <Compile Include="PlrDatabase\Player.cs" />
+        <Compile Include="PlrDatabase\PlayersDatabase.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Shop\Item.cs" />
@@ -61,6 +64,10 @@
         <Compile Include="TrainConfig\Route.cs" />
         <Compile Include="TrainConfig\Train.cs" />
         <Compile Include="TrainConfig\TrainRouteConfigurator.cs" />
+        <Compile Include="Warrior.cs" />
+        <Compile Include="ZOOO\Animal.cs" />
+        <Compile Include="ZOOO\Types.cs" />
+        <Compile Include="ZOOO\Zoo.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

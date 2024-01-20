@@ -15,60 +15,67 @@ namespace stuff
         // урона, кто-то при получении урона немного себя лечит. Будут новые
         // поля у наследников. У кого-то может быть мана и это только его
         // особенность.
-        private Fighter[] fighters;
+        private Fighter[] fightersList;
         private Fighter fighter1;
         private Fighter fighter2;
         
         public Ring()
         {
-            fighters = new Fighter[4];
-            fighters[0] = new FighterType1();
-            fighters[1] = new FighterType2();
-            fighters[2] = new FighterType3();
-            fighters[3] = new FighterType4();
+            fightersList = new Fighter[4];
+            fightersList[0] = new FighterType1();
+            fightersList[1] = new FighterType2();
+            fightersList[2] = new FighterType3();
+            fightersList[3] = new FighterType4();
         }
         
-        public void ChooseYourFighters()
+        public Fighter[] ChooseYourFighters()
         {
             int counter = 1;
-            Console.WriteLine("Choose 1st fighter: ");
-            foreach (var fighter in fighters)
+            foreach (var fighter in fightersList)
             {
                 Console.WriteLine($"{counter} - {fighter.Name}");
                 counter++;
             }
-
-            fighter1 = Choice();
+            
+            var chosenFighters = new Fighter[2];
+            Console.WriteLine("Choose 1st fighter: ");
+            chosenFighters[0] = Choice();
             Console.WriteLine("Choose 2nd fighter: ");
-            fighter2 = Choice();
+            chosenFighters[1] = Choice();
+            return chosenFighters;
+
         }
 
-        public void StartFight()
+        public void StartFight(Fighter[] fighters)
         {
-            while (fighter1.Health > 0 && fighter2.Health > 0)
+            while (fighters[0].Health > 0 && fighters[1].Health > 0)
             {
-                Console.WriteLine($"\n{fighter1.Name} turn:\n");
-                fighter1.DealDamage(fighter2);
-                Console.WriteLine($"\n{fighter2.Name} turn:\n");
-                fighter2.DealDamage(fighter1);
+                Console.WriteLine($"\n{fighters[0].Name} turn:\n");
+                fighters[0].DealDamage(fighters[1]);
+                
+                if(fighters[1].Health == 0)
+                    break;
+                
+                Console.WriteLine($"\n{fighters[1].Name} turn:\n");
+                fighters[1].DealDamage(fighters[0]);
             }
             Console.WriteLine("The fight is over!");
         }
 
-        public void ShowWinner()
+        public void ShowWinner(Fighter[] fighters)
         {
-            if (fighter1.Health <= 0)
-            {
-                Console.WriteLine($"{fighter2.Name} won!");
-            }
-            else if (fighter2.Health <= 0)
-            {
-                Console.WriteLine($"{fighter1.Name} won!");
-            }
+            if (fighters[0].Health > 0 && fighters[1].Health > 0)
+                Console.WriteLine("Could not find a winner, please restart a fight");
             else
             {
-                Console.WriteLine("Friendship won...?");
+                if (fighters[0].Health <= 0)
+                    Console.WriteLine($"{fighters[1].Name} won!");
+                else if (fighters[1].Health <= 0)
+                    Console.WriteLine($"{fighters[0].Name} won!");
+                else
+                    Console.WriteLine("Friendship won...?");
             }
+            
         }
         private Fighter Choice()
         {

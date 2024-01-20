@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+// ReSharper disable All
 
 namespace stuff
 {
@@ -11,7 +12,6 @@ namespace stuff
         
         public void BorrowBook(string name, Library library)
         {
-            
             if (library.TryGetBook(name, out Book book))
             {
                 library.RemoveBook(name);
@@ -19,7 +19,7 @@ namespace stuff
                 Console.WriteLine($"You took the book \"{book.Name}\" by {book.Author}");
             }
             else
-                Console.WriteLine("Could not find such book in the library");
+                Console.WriteLine("Couldn't find such book in the library");
         }
 
         public void ReturnBook(string name, Library library)

@@ -12,8 +12,8 @@ namespace stuff
             Name = "Super Strong Grandpa Alfred";
             MaxHealth = 100;
             Health = MaxHealth;
-            Attack = 40;
-            Armor = 5;
+            Attack = 30;
+            Armor = 10;
             counter = 3;
         }
 
@@ -21,9 +21,9 @@ namespace stuff
         {
             if (counter > 1)
             {
-                base.DealDamage(fighter);
-                counter--;
                 Console.WriteLine($"{Name} punches {fighter.Name} for {Attack} and says that this isn't his strongest hit with a smirk!");
+                counter--;
+                base.DealDamage(fighter);
             }
             else
             {
@@ -34,14 +34,15 @@ namespace stuff
 
         public override void GetDamage(int damage)
         {
+            //default take dmg
             base.GetDamage(damage);
             Console.WriteLine($"{Name} was attacked but doesn't show any emotion like a true fighter, though their health now is {Health}");
         }
 
         private void CastSpell(Fighter fighter)
         {
-            fighter.GetDamage(Attack * 3);
             Console.WriteLine($"Oh-oh, {Name} decides to show their true power now and hits {fighter.Name} with all force for {Attack * 3}!");
+            fighter.GetDamage(Attack * 3);
         }
     }
 }

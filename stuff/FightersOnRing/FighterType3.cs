@@ -26,7 +26,7 @@ namespace stuff
             if (!twiceHit)
             {
                 base.GetDamage(damage);
-                Console.WriteLine($"{Name} almost flew away after getting {damage}, but not going to give up!");
+                Console.WriteLine($"{Name} almost flew away after getting {damage}, but not going to give up with the health {Health}!");
             }
         }
 
@@ -34,12 +34,15 @@ namespace stuff
         {
             if (twiceHit)
             {
-                fighter.GetDamage(Attack * 2);
                 Console.WriteLine($"{Name} got a bonus for his amazing dodge and deals {Attack * 2} damage! Holy moly");
                 twiceHit = false;
+                fighter.GetDamage(Attack * 2);
             }
             else
+            {
+                Console.WriteLine($"Watch out! {Name} jumps out of nowhere and attacks for {Attack}!");
                 base.DealDamage(fighter);
+            }
         }
 
         private bool TryCastSpell()

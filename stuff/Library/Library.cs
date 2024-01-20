@@ -5,33 +5,38 @@ using System.Linq;
 
 namespace stuff
 {
-    // Создать хранилище книг.
-    // Каждая книга имеет название, автора и год выпуска (можно добавить
-    // еще параметры). В хранилище можно добавить книгу, убрать книгу,
-    // показать все книги и показать книги по указанному параметру (по
-    // названию, по автору, по году выпуска).
-    
     public class Library
     {
-        private Dictionary<string,Book> bookList = new Dictionary<string,Book>();
+        private Dictionary<string,Book> libraryBooks = new Dictionary<string,Book>();
+        
         public void AddBook(Book book)
         {
-            if (!bookList.ContainsKey(book.Name))
-                bookList.Add(book.Name, book);
+            if (!libraryBooks.ContainsKey(book.Name))
+                libraryBooks.Add(book.Name, book);
             else
                 Console.WriteLine("There is already such book in the library.");
         }
 
-        public void RemoveBook(string bookName)
+        public void RemoveBook(string name, bool showResult = false)
         {
-            bookList.Remove(bookName);
+            if (libraryBooks.ContainsKey(name))
+            {
+                libraryBooks.Remove(name);
+                if(showResult)
+                    Console.WriteLine($"{name} was removed from the library");
+            }
+            else
+            {
+                if (showResult)
+                    Console.WriteLine("Couldn't find such book in the library");
+            }
         }
 
         public void ShowAllBooks()
         {
-            if (bookList.Any())
+            if (libraryBooks.Any())
             {
-                foreach (var book in bookList.Values)
+                foreach (var book in libraryBooks.Values)
                 {
                     Console.WriteLine($"\"{book.Name}\" by {book.Author}, released in {book.ReleaseYear}");
                 }                
@@ -42,9 +47,9 @@ namespace stuff
 
         public void ShowBooksByYear(int year)
         {
-            if (bookList.Any())
+            if (libraryBooks.Any())
             {
-                var booksByYear = bookList.Values.Where(b => b.ReleaseYear == year).ToList();
+                var booksByYear = libraryBooks.Values.Where(b => b.ReleaseYear == year).ToList();
 
                 if (booksByYear.Any())
                 {
@@ -65,9 +70,9 @@ namespace stuff
 
         public void ShowBooksByAuthor(string author)
         {
-            if (bookList.Any())
+            if (libraryBooks.Any())
             {
-                var booksByAuthor = bookList.Values.Where(b => b.Author == author).ToList();
+                var booksByAuthor = libraryBooks.Values.Where(b => b.Author == author).ToList();
                 if (booksByAuthor.Any())
                 {
                     foreach (var book in booksByAuthor)
@@ -85,9 +90,9 @@ namespace stuff
 
         public void ShowBooksByName()
         {
-            if (bookList.Any())
+            if (libraryBooks.Any())
             {
-                var booksByName = bookList.Values.OrderBy(b => b.Name).ToList();
+                var booksByName = libraryBooks.Values.OrderBy(b => b.Name).ToList();
                 foreach (var book in booksByName)
                 {
                     Console.WriteLine($"\"{book.Name}\" by {book.Author}, released in {book.ReleaseYear}");
@@ -101,9 +106,9 @@ namespace stuff
         public bool TryGetBook(string name, out Book book)
         {
             book = null;
-            if (bookList.ContainsKey(name))
+            if (libraryBooks.ContainsKey(name))
             {
-                book = bookList[name];
+                book = libraryBooks[name];
                 return true;
             }
             return false;
