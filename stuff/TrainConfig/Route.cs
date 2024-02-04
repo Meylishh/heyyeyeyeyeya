@@ -13,8 +13,8 @@
             Name = $"{from} - {to}";
         }
     }
-    public enum City
-    {
+    public enum City 
+    { 
         Moscow,
         Vladivostok,
         Saratov,

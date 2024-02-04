@@ -1,0 +1,13 @@
+E:\gaydev\not trash\projects\cblya\heyyeyeyeyeya\stuff\bin\Debug\net8.0\stuff.exe
+E:\gaydev\not trash\projects\cblya\heyyeyeyeyeya\stuff\bin\Debug\net8.0\stuff.deps.json
+E:\gaydev\not trash\projects\cblya\heyyeyeyeyeya\stuff\bin\Debug\net8.0\stuff.runtimeconfig.json
+E:\gaydev\not trash\projects\cblya\heyyeyeyeyeya\stuff\bin\Debug\net8.0\stuff.dll
+E:\gaydev\not trash\projects\cblya\heyyeyeyeyeya\stuff\bin\Debug\net8.0\stuff.pdb
+E:\gaydev\not trash\projects\cblya\heyyeyeyeyeya\stuff\obj\Debug\net8.0\stuff.GeneratedMSBuildEditorConfig.editorconfig
+E:\gaydev\not trash\projects\cblya\heyyeyeyeyeya\stuff\obj\Debug\net8.0\stuff.csproj.CoreCompileInputs.cache
+E:\gaydev\not trash\projects\cblya\heyyeyeyeyeya\stuff\obj\Debug\net8.0\stuff.sourcelink.json
+E:\gaydev\not trash\projects\cblya\heyyeyeyeyeya\stuff\obj\Debug\net8.0\stuff.dll
+E:\gaydev\not trash\projects\cblya\heyyeyeyeyeya\stuff\obj\Debug\net8.0\refint\stuff.dll
+E:\gaydev\not trash\projects\cblya\heyyeyeyeyeya\stuff\obj\Debug\net8.0\stuff.pdb
+E:\gaydev\not trash\projects\cblya\heyyeyeyeyeya\stuff\obj\Debug\net8.0\stuff.genruntimeconfig.cache
+E:\gaydev\not trash\projects\cblya\heyyeyeyeyeya\stuff\obj\Debug\net8.0\ref\stuff.dll

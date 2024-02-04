@@ -1,81 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-    <PropertyGroup>
-        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{8688CE79-714B-4EC7-BF38-F00B848C8787}</ProjectGuid>
-        <OutputType>Exe</OutputType>
-        <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>stuff</RootNamespace>
-        <AssemblyName>stuff</AssemblyName>
-        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-        <FileAlignment>512</FileAlignment>
-        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-        <PlatformTarget>AnyCPU</PlatformTarget>
-        <DebugSymbols>true</DebugSymbols>
-        <DebugType>full</DebugType>
-        <Optimize>false</Optimize>
-        <OutputPath>bin\Debug\</OutputPath>
-        <DefineConstants>DEBUG;TRACE</DefineConstants>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-        <PlatformTarget>AnyCPU</PlatformTarget>
-        <DebugType>pdbonly</DebugType>
-        <Optimize>true</Optimize>
-        <OutputPath>bin\Release\</OutputPath>
-        <DefineConstants>TRACE</DefineConstants>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
-    </PropertyGroup>
-    <ItemGroup>
-        <Reference Include="System" />
-        <Reference Include="System.Core" />
-        <Reference Include="System.Data" />
-        <Reference Include="System.Xml" />
-    </ItemGroup>
-    <ItemGroup>
-        <Compile Include="CardGame\Card.cs" />
-        <Compile Include="CardGame\CardGame.cs" />
-        <Compile Include="CardGame\CardPack.cs" />
-        <Compile Include="CardGame\CardPlayer.cs" />
-        <Compile Include="Character.cs" />
-        <Compile Include="FightersOnRing\Fighter.cs" />
-        <Compile Include="FightersOnRing\FighterType1.cs" />
-        <Compile Include="FightersOnRing\FighterType2.cs" />
-        <Compile Include="FightersOnRing\FighterType3.cs" />
-        <Compile Include="FightersOnRing\FighterType4.cs" />
-        <Compile Include="FightersOnRing\Ring.cs" />
-        <Compile Include="Lesson.cs" />
-        <Compile Include="Library\Book.cs" />
-        <Compile Include="Library\Library.cs" />
-        <Compile Include="Library\Reader.cs" />
-        <Compile Include="Mage.cs" />
-        <Compile Include="PlrDatabase\Player.cs" />
-        <Compile Include="PlrDatabase\PlayersDatabase.cs" />
-        <Compile Include="Program.cs" />
-        <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="Shop\Item.cs" />
-        <Compile Include="Shop\Shopkeeper.cs" />
-        <Compile Include="TrainConfig\Route.cs" />
-        <Compile Include="TrainConfig\Train.cs" />
-        <Compile Include="TrainConfig\TrainRouteConfigurator.cs" />
-        <Compile Include="Warrior.cs" />
-        <Compile Include="ZOOO\Animal.cs" />
-        <Compile Include="ZOOO\Types.cs" />
-        <Compile Include="ZOOO\Zoo.cs" />
-    </ItemGroup>
-    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-         Other similar extension points exist, see Microsoft.Common.targets.
-    <Target Name="BeforeBuild">
-    </Target>
-    <Target Name="AfterBuild">
-    </Target>
-    -->
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <LangVersion>9</LangVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AssemblyTitle>stuff</AssemblyTitle>
+    <Product>stuff</Product>
+    <Copyright>Copyright ©  2024</Copyright>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+  </PropertyGroup>
 </Project>

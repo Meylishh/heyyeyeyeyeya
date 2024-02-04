@@ -78,12 +78,4 @@ namespace stuff.ZOOO
             Console.WriteLine($"{Name} says {Sound}! What a charming sound");
         }
     }
-
-    public enum FoodType
-    {
-        Carnivorous,
-        Herbivore,
-        Omnivorous
-    }
-    
 }
