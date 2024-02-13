@@ -17,22 +17,25 @@ namespace stuff
     {
         public static void Main(string[] args)
         {
-            IVehicles();
-        }
-        private static void IVehicles()
-        {
             var submarine = new Submarine(150); 
             submarine.Sail();
+            Console.WriteLine();
+            
             submarine.IsUnderWater = true;
             submarine.Sail();
+            Console.WriteLine();
 
             var amph = new Amphibius(500);
             amph.Fly();
+            Console.WriteLine();
             amph.Sail();
 
             var car = new Car2(250);
             car.Ride();
+            
+            Console.ReadLine();
         }
+
         private static void Shapes()
         {
             var list = new List<Shape>()

@@ -28,9 +28,19 @@ namespace stuff.IVehicles
                     if (key.Key == ConsoleKey.Q)
                     {
                         currentSpeed = 0;
-                        Console.WriteLine("The submarine has stopped");
+                        Console.WriteLine("\nThe submarine has stopped");
                         break;
                     }
+                }
+                else
+                {
+                    for (int i = Console.CursorLeft; i >= coord.Left; i--)
+                    {
+                        Console.SetCursorPosition(i, coord.Top);
+                        Console.Write(" ");
+                    }
+                
+                    Console.SetCursorPosition(coord.Left, coord.Top);
                 }
                 
                 if (currentSpeed < MaxSpeed && currentSpeed > 0)
@@ -62,12 +72,6 @@ namespace stuff.IVehicles
                     : $"The submarine is sailing like an ordinary boat on the water at the {currentSpeed} speed");
                 Thread.Sleep(30);
                 
-                for (int i = Console.CursorLeft; i >= coord.Left; i--)
-                {
-                    Console.SetCursorPosition(i, coord.Top);
-                    Console.Write(" ");
-                }
-                Console.SetCursorPosition(coord.Left, coord.Top);
             }
         }
     }

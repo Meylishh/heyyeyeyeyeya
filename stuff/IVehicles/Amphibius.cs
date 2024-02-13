@@ -56,7 +56,6 @@ namespace stuff.IVehicles
 
         private void ControlSpeed(AmphibiusTravelMode travelMode)
         {
-            Console.WriteLine();
             var coord = Console.GetCursorPosition();
             var endXPos = coord.Left;
             Console.Write($"The amphibius starts to {travelMode.ToString().ToLower()} at {currentSpeed} speed");
@@ -66,7 +65,7 @@ namespace stuff.IVehicles
                 {
                     var key = Console.ReadKey(true);
                     
-                    if (key.Key is ConsoleKey.W or ConsoleKey.S or ConsoleKey.Q)
+                    if (key.Key is ConsoleKey.W or ConsoleKey.S)
                     {
                         for (int i = endXPos; i >= coord.Left; i--)
                         {
@@ -74,7 +73,7 @@ namespace stuff.IVehicles
                             Console.Write(" ");
                         }
                     }
-
+                    
                     switch (key.Key)
                     {
                         case ConsoleKey.W:
@@ -94,8 +93,7 @@ namespace stuff.IVehicles
                             Console.Write($"The amphibius starts to {travelMode.ToString().ToLower()} at {currentSpeed} speed");
                             break;
                         case ConsoleKey.Q:
-                            Console.SetCursorPosition(coord.Left, coord.Top);
-                            Console.Write("The amphibius has stopped");
+                            Console.WriteLine("\nThe amphibius has stopped");
                             if (travelMode == AmphibiusTravelMode.Fly)
                             {
                                 IsFlying = false;

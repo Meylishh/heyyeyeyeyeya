@@ -14,21 +14,20 @@ namespace stuff.IVehicles
         }
         public void Ride()
         {
-            Console.WriteLine($"\nThis car has no brakes, so you ride at the {MaxSpeed} speed...");
-            Console.Write("You have 15 seconds to write down your last words before you'll crush into a tree:");
+            Console.WriteLine($"\nThis car has no breaks, so you ride at the {MaxSpeed} speed...");
+            Console.Write("You have 15 seconds to write down your last words before you'll crash into a tree: ");
 
-            var countdownTask = Countdown();
             var readLastWordsTask = ReadLastWords();
+            var countdownTask = Countdown();
 
-            Task.WhenAny(countdownTask, readLastWordsTask).ContinueWith(t =>
-            {
-                Console.WriteLine(readLastWordsTask.IsCompleted
-                    ? "\nYeah, buddy......... I'll remember that"
-                    : "\nSorry buddy, you're out of time. Don't worry, i'll show your message to your mom");
-            });
+            Task.WaitAny(readLastWordsTask, countdownTask);
+
+            Console.WriteLine(readLastWordsTask.IsCompleted
+                ? "\nYeah, Buddy......... I'll remember that"
+                : "\nSorry Buddy, you're out of time. Don't worry, I'll show your message to your mom");
         }
 
-        private Task ReadLastWords()
+        private static Task ReadLastWords()
         {
             return Task.Run(() =>
             {
@@ -36,7 +35,7 @@ namespace stuff.IVehicles
             });
         }
 
-        private Task Countdown()
+        private static Task Countdown()
         {
             return Task.Delay(TimeSpan.FromSeconds(15));
         }
