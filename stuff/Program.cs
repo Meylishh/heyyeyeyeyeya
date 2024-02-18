@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using stuff.Calculate;
 using stuff.Carsss;
+using stuff.CharacteristicImprovement;
 using stuff.IVehicles;
 using stuff.Shapes;
 using stuff.Supermarket;
@@ -17,25 +18,56 @@ namespace stuff
     {
         public static void Main(string[] args)
         {
-            var submarine = new Submarine(150); 
-            submarine.Sail();
-            Console.WriteLine();
+            var player = new CharacteristicImprovement.Player();
             
-            submarine.IsUnderWater = true;
-            submarine.Sail();
-            Console.WriteLine();
-
-            var amph = new Amphibius(500);
-            amph.Fly();
-            Console.WriteLine();
-            amph.Sail();
-
-            var car = new Car2(250);
-            car.Ride();
+            var armor1 = new Armor(player, "Paper Shield", 2);
+            var armor2 = new Armor(player, "Iron Armor", 20);
+            var weapon1 = new Weapon(player, "Blade", 5);
+            var wearon2 = new Weapon(player, "Proposal Ring", 10);
             
-            Console.ReadLine();
+            
+            player.Equipment.AddNewItem(armor1, armor2, weapon1, wearon2);
+            player.Equipment.DisableItem(armor1);
+            player.Equipment.DisplayStatsInfo();
         }
 
+        private static void Modifiers()
+        {
+            var creature = new Creature();
+            creature.Attack = 10;
+            var baseModif = new BaseModifier(creature);
+            var m1 = new DoubleAttackModifier(creature);
+            var m2 = new DisableAllAttackModifier(creature);
+            var m3 = new DoubleAttackModifier(creature);
+            var m4 = new DoubleAttackModifier(creature);
+            
+            baseModif.AddModifier(m1);
+            baseModif.AddModifier(m2);
+            baseModif.AddModifier(m3);
+            baseModif.AddModifier(m4);
+            
+            baseModif.ApplyModifier();
+        } 
+        private static void IVehicles()
+        {
+            var submarine = new Submarine(150); 
+           submarine.Sail();
+           Console.WriteLine();
+           
+           submarine.IsUnderWater = true;
+           submarine.Sail();
+           Console.WriteLine();
+
+           var amph = new Amphibius(500);
+           amph.Fly();
+           Console.WriteLine();
+           amph.Sail();
+
+           var car = new Car2(250);
+           car.Ride();
+           
+           Console.ReadLine();
+        }
         private static void Shapes()
         {
             var list = new List<Shape>()

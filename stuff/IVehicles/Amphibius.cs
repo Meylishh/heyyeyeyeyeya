@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using stuff.Supermarket;
+// ReSharper disable All
 
 namespace stuff.IVehicles
 {
