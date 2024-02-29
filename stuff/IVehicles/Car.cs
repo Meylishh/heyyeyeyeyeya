@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 
 namespace stuff.IVehicles
 {
-    public class Car2: IGround
+    public class Car: IGround
     {
         public float MaxSpeed { get; private set; }
 
-        public Car2(float maxSpeed)
+        public Car(float maxSpeed)
         {
             MaxSpeed = maxSpeed;
         }
@@ -25,6 +25,8 @@ namespace stuff.IVehicles
             Console.WriteLine(readLastWordsTask.IsCompleted
                 ? "\nYeah, Buddy......... I'll remember that"
                 : "\nSorry Buddy, you're out of time. Don't worry, I'll show your message to your mom");
+            
+            Environment.Exit(0);
         }
 
         private static Task ReadLastWords()

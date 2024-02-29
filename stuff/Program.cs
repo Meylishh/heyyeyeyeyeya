@@ -18,6 +18,25 @@ namespace stuff
     {
         public static void Main(string[] args)
         {
+            var submarine = new Submarine(150); 
+            submarine.Sail();
+            Console.WriteLine();
+           
+            submarine.IsUnderWater = true;
+            submarine.Sail();
+            Console.WriteLine();
+
+            var amph = new Amphibius(500);
+            amph.Fly();
+            Console.WriteLine();
+            amph.Sail();
+
+            var car = new IVehicles.Car(250);
+            car.Ride();
+        }
+
+        private static void PlayerEqupment()
+        {
             var player = new CharacteristicImprovement.Player();
             
             var armor1 = new Armor(player, "Paper Shield", 2);
@@ -27,10 +46,17 @@ namespace stuff
             
             
             player.Equipment.AddNewItem(armor1, armor2, weapon1, wearon2);
+            Console.WriteLine();
+            
             player.Equipment.DisableItem(armor1);
+            Console.WriteLine();
+            
+            player.Equipment.EnableItem(armor1);
+            Console.WriteLine();
+            
+            player.Equipment.ClearAllEquipment();
             player.Equipment.DisplayStatsInfo();
         }
-
         private static void Modifiers()
         {
             var creature = new Creature();
@@ -63,8 +89,8 @@ namespace stuff
            Console.WriteLine();
            amph.Sail();
 
-           var car = new Car2(250);
-           car.Ride();
+           //var car = IVehicles.Car(250);
+           //car.Ride();
            
            Console.ReadLine();
         }
@@ -172,7 +198,6 @@ namespace stuff
                 }
             }
         }
-        
         private static void Supermarket()
         {
             var cli = new Client("Meylish", 99999);
@@ -181,8 +206,7 @@ namespace stuff
             var sprMarket = new SupermarketManager(SupermarketManager.GenerateClientsQueue(10));
             sprMarket.StartTakingClients();
         }
-
-        private void Cars()
+        private static void Cars()
         {
             var teslaTruck = new TeslaTruck("Tesla", "Truck", 2017, 1300, 724, 160, 36000);
             var teslaCar = new TeslaModelS("Tesla", "S", 2012, 1000, 426, 85, 5);
@@ -220,8 +244,7 @@ namespace stuff
             
             motorcycle.DoWheelie();*/
         }
-
-        private void Zoo()
+        private static void Zoo()
         {
             var zoo = new Zoo();
             
@@ -255,7 +278,6 @@ namespace stuff
                 animal.MakeSound();
             }
         }
-
         private void Library()
         {
             //librarby
@@ -299,7 +321,6 @@ namespace stuff
             reader.ShowAllBooks();
             reader.ReturnBook("The washing machine manual", library);
         }
-
         private void Fighters()
         {
             //fighters
@@ -308,7 +329,6 @@ namespace stuff
             ring.StartFight(fighters);
             ring.ShowWinner(fighters);
         }
-
         private void Shop()
         {
             //shop
@@ -332,7 +352,6 @@ namespace stuff
             plr.BuyItem("Glued mug", shopkeeper);
             shopkeeper.ShowAllItems();
         }
-
         private void TrainConfig()
         {
             //train config
@@ -350,7 +369,6 @@ namespace stuff
                 Console.WriteLine("Wrong route");
             }
         }
-
         private void Cards()
         {
             //card game
@@ -360,7 +378,6 @@ namespace stuff
             CardGame.Rounds(cardPack);
             CardGame.ShowWinner();
         }
-
         private void Database()
         {
             //database
@@ -381,7 +398,6 @@ namespace stuff
             PlayersDatabase.BanPlayer(PlayersDatabase.GetIDbyIndex(1));
             PlayersDatabase.DeletePlayer(PlayersDatabase.GetIDbyIndex(1));*/
         }
-
         private void HW1()
         {
              //1

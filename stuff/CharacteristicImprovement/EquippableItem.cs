@@ -4,57 +4,6 @@ using stuff.Carsss;
 
 namespace stuff.CharacteristicImprovement
 {
-    public class PlayerEquipment
-    {
-        private readonly BaseEquippableItem baseEquippableItem;
-        private readonly Player player;
-        private readonly int playerBaseAttack;
-        private readonly int playerBaseArmor;
-        
-        public PlayerEquipment(Player player)
-        {
-            this.player = player;
-            playerBaseAttack = player.Attack;
-            playerBaseArmor = player.Armor;
-            
-            baseEquippableItem = new BaseEquippableItem(player, "baseItem");
-        }
-
-        public void AddNewItem(BaseEquippableItem equippableItem)
-        {
-            baseEquippableItem.AddItem(equippableItem);
-            Console.WriteLine($"{equippableItem.ItemName} item was added to equipment");
-
-            RecalculateStats();
-        }
-        public void AddNewItem(params BaseEquippableItem[] equippableItems)
-        {
-            foreach (var equippableItem in equippableItems)
-            {
-                baseEquippableItem.AddItem(equippableItem);
-                Console.WriteLine($"{equippableItem.ItemName} item was added to equipment");
-            }
-            
-            RecalculateStats();
-        }
-
-        public void DisableItem(BaseEquippableItem equippableItem)
-        {
-            equippableItem.isActive = false;
-            RecalculateStats();
-        }
-
-        public void DisplayStatsInfo() =>
-            Console.WriteLine($"Current player stats:\natk: {player.Attack}; def: {player.Armor}");
-        private void RecalculateStats()
-        {
-            player.Attack = playerBaseAttack;
-            player.Armor = playerBaseArmor;
-            baseEquippableItem.Equip();
-            Console.WriteLine($"Current player stats:\natk: {player.Attack}; def: {player.Armor}");
-        }
-    }
-
     public class BaseEquippableItem
     {
         public bool isActive { get; set; } = true;
@@ -68,13 +17,7 @@ namespace stuff.CharacteristicImprovement
             ItemName = itemName;
         }
 
-        protected virtual void Activate()
-        {
-            if (this is not BaseEquippableItem)
-            {
-                throw new NotImplementedException();
-            }
-        }
+        protected virtual void Activate() { }
 
         public void AddItem(BaseEquippableItem equippableItem)
         {
@@ -131,5 +74,4 @@ namespace stuff.CharacteristicImprovement
             Console.WriteLine($"plr armor +{IncreaseArmor}");
         }
     }
-    
 }
