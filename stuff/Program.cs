@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using stuff.Calculate;
 using stuff.Carsss;
 using stuff.CharacteristicImprovement;
+
 using stuff.IVehicles;
 using stuff.Shapes;
 using stuff.Supermarket;
@@ -16,25 +18,24 @@ namespace stuff
 {
     public class Program
     {
+   
         public static void Main(string[] args)
         {
-            var submarine = new Submarine(150); 
-            submarine.Sail();
-            Console.WriteLine();
-           
-            submarine.IsUnderWater = true;
-            submarine.Sail();
-            Console.WriteLine();
-
-            var amph = new Amphibius(500);
-            amph.Fly();
-            Console.WriteLine();
-            amph.Sail();
-
-            var car = new IVehicles.Car(250);
-            car.Ride();
+            
         }
 
+        private static void User()
+        {
+            var user = new User.User("Meylish", "meylishhhushh@pigeonmail.su", "123456");
+            Console.WriteLine($"Name: {user.Name}\nEmail: {user.EMailAddress}\nPassword: {user.Password}");
+            user.ChangePassword("dfdfjkdjf", "238783873huhhuhuh");
+            user.ChangePassword("123456", "<0w0>");
+        }
+        private static void AutoService(Car client)
+        {
+            var service = new AutoService.AutoService(500);
+            service.ServeClient(new AutoService.Car("Lada", 3));
+        }
         private static void PlayerEqupment()
         {
             var player = new CharacteristicImprovement.Player();
@@ -77,22 +78,20 @@ namespace stuff
         private static void IVehicles()
         {
             var submarine = new Submarine(150); 
-           submarine.Sail();
-           Console.WriteLine();
+            submarine.Sail();
+            Console.WriteLine();
            
-           submarine.IsUnderWater = true;
-           submarine.Sail();
-           Console.WriteLine();
+            submarine.IsUnderWater = true;
+            submarine.Sail();
+            Console.WriteLine();
 
-           var amph = new Amphibius(500);
-           amph.Fly();
-           Console.WriteLine();
-           amph.Sail();
+            var amph = new Amphibius(500);
+            amph.Fly();
+            Console.WriteLine();
+            amph.Sail();
 
-           //var car = IVehicles.Car(250);
-           //car.Ride();
-           
-           Console.ReadLine();
+            var car = new IVehicles.Car(250);
+            car.Ride();
         }
         private static void Shapes()
         {
@@ -107,14 +106,10 @@ namespace stuff
 
             foreach (var shape in list)
             {
-                PrintInfo(shape);
+                Console.WriteLine($"Shape {shape.GetType().Name.ToLower()} has area of {shape.Area()} and perimeter {shape.Perimeter()}.");
             }
             
             Console.ReadLine();
-        }
-        private static void PrintInfo(Shape shape)
-        {
-            Console.WriteLine($"Shape {shape.GetType().Name.ToLower()} has area of {shape.Area()} and perimeter {shape.Perimeter()}.");
         }
         private static void Calculator()
         {
