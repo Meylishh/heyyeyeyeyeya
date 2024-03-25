@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading;
+using stuff.Bank;
+using stuff.BookStorage;
 using stuff.Calculate;
 using stuff.Carsss;
 using stuff.CharacteristicImprovement;
-
+using stuff.Exceptions;
 using stuff.IVehicles;
 using stuff.Shapes;
+using stuff.ShapeStructy;
 using stuff.Supermarket;
 using stuff.ZOOO;
 using Car = stuff.Carsss.Car;
+using Rectangle = stuff.Shapes.Rectangle;
 
 // ReSharper disable All
 
@@ -21,9 +26,75 @@ namespace stuff
    
         public static void Main(string[] args)
         {
+            var a = new POINT( 2,6);
+            var b = new POINT(5, 1);
+            var rect = new ShapeStructy.Rectangle(a, b);
+            Console.WriteLine(rect.Area());
+            Console.WriteLine(rect.Contains(new POINT(2,3)));
             
         }
 
+        #region DZs
+        private static void PrintPurchaseResult(float cost, float balance)
+        {
+            // var balance = 3232f;
+            // Console.WriteLine($"Current balance: {balance}");
+            // WalletOperations.IncreaseBalanceByPercent(ref balance, 10);
+            // Console.WriteLine($"New balance: {balance}");
+            //
+            // PrintPurchaseResult(200, balance);
+            // PrintPurchaseResult(5656, balance);
+            ////
+            
+            if (WalletOperations.TryPurchase(cost, balance, out float newBalance))
+            {
+                Console.WriteLine($"Success: new balance {newBalance}");
+            }
+            else
+            {
+                Console.WriteLine($"Fail: new balance {newBalance}");
+            }
+        }
+        private static void BankAccount()
+        {
+            var a = new BankAccount();
+            a.HandleWriteOffMoney(343232);
+            a.HandleWriteOffMoney(100);
+            a.HandleWriteOffMoney(-6);
+        }
+        private static void Storage()
+        {
+            Input.Divide(Input.HandleInput());
+            //////////////////
+            var strg = new Storage();
+            var b1 = new BookStorage.Book("Cherry's photo album", "Meylish", 2030);
+            var b2 = new BookStorage.Book("The Great Dolina Polsha Dictionary", "Meylish & Derllie", 2024);
+            
+            try
+            {
+                b1.AddCopies(122);
+                strg.AddBook(b1);
+                strg.AddBook(b2);
+                b2.RemoveCopies(12);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            
+            try
+            {
+                strg.RemoveBook(b1.Id);
+                strg.RemoveBook(122);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            
+            strg.FindBookByName("The Great Dolina Polsha Dictionary");
+            strg.ShowAllBooks();
+        }
         private static void User()
         {
             var user = new User.User("Meylish", "meylishhhushh@pigeonmail.su", "123456");
@@ -492,5 +563,7 @@ namespace stuff
 
             }
         }
+        #endregion
+        
     }
 }
